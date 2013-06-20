@@ -53,9 +53,7 @@ function ClosePixelation( img, options ) {
   this.width = canvas.width = img.width
   this.height = canvas.height = img.height
 
-  ctx.drawImage( img, 0, 0 )
-
-  ClosePixelation.render( canvas, options )
+  this.render( options )
 
   // replace image with canvas
   img.parentNode.replaceChild( canvas, img )
@@ -147,6 +145,15 @@ ClosePixelation.renderClosePixels = function ( canvas, opts ) {
     } // col
   } // row
 
+}
+
+ClosePixelation.prototype.render = function ( options ) {
+  this.ctx.drawImage( this.img, 0, 0 )
+  ClosePixelation.render( this.canvas, options )
+}
+
+ClosePixelation.prototype.renderClosePixels = function ( opt ) {
+  ClosePixelation.renderClosePixels( this.canvas, options )
 }
 
 // enable img.closePixelate
