@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>PixelCam</title>
+    <script type="text/javascript" src="js/CamMan.js"></script>
+    <script type="text/javascript" src="js/close-pixelate.js"></script>
+  </head>
+  <body style="text-align:center;">
+    <div id="container"><h2>Pixel Cam</h2></div>
+    <script type="text/javascript">
+      var camMan = new CamMan();
+
+      camMan.on('start', function () {
+        camMan.getCanvas('container', function (canvas) {
+          ClosePixelation.renderClosePixels(canvas, { resolution: 16 });
+        });
+      });
+
+      camMan.start();
+    </script>
+  </body>
+</html>
